@@ -1,8 +1,7 @@
 import React from 'react';
-
 import './App.css';
-
 import Header from './Components/Header';
+import TransformersSection from './Containers/TransformersSection'
 
 export default class App extends React.Component {
   state = {
@@ -22,13 +21,19 @@ export default class App extends React.Component {
         name: 'omega',
         url: 'http://pngimg.com/uploads/transformers/transformers_PNG3.png'
       }
-    ]
+    ],
+    showTransformers: false
+  }
+
+  handleClick = () => {
+    this.setState({showTransformers: !this.state.showTransformers})
   }
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header logo={this.state.proptimusLogo} handleClick={this.handleClick}/>
+        {this.state.showTransformers ? <TransformersSection proptimii={this.state.proptimii}/> : null }
       </div>
     );
   }
